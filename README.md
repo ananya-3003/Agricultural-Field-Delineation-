@@ -62,19 +62,6 @@ This allows the network to selectively amplify edge-sensitive feature maps while
 
 ---
 
-## 📊 Architectural Ablation Performance
-
-Comparing the structural modifications against the author baseline under identical training protocols and compound loss formulation:
-
-| Model Architecture Stage | Residual Highways | Channel Attention | IoU (%) | F1-Score (%) | Boundary Distance Error (PoLiS) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Author Baseline** | ❌ (0) | Standard SE ($\mu$ only) | 42.45% | 39.09% | 19.77 m |
-| **Stage 1: Fine-Tuned Baseline** | ❌ (0) | Standard SE ($\mu$ only) | 55.39% | 54.19% | 15.04 m |
-| **Stage 2: + Residual Connections** | ✅ (15) | Standard SE ($\mu$ only) | 53.10% | 57.60% | 15.21 m |
-| **Stage 3: + Residual + SD-scSE (Ours)** | ✅ (15) | **SD-scSE ($\mu + \sigma$)** | **56.70%** | **61.06%** | **14.51 m** |
-
----
-
 ## 📁 Repository Structure
 
 ```
