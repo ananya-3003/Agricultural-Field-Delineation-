@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch Checkpoints and Model Weights (>100MB breaks GitHub push)
+*.pth
+*.pt
+*.bin
+*.ckpt
+outputs/
+weights/
+
+# Large Datasets & GeoTIFF Imagery
+*.tif
+*.tiff
+*.npy
+*.npz
+data/
+data_split/
+*.zip
+*.tar.gz
+
+# Environments & IDEs
+.env
+.venv
+env/
+venv/
+.idea/
+.vscode/
+*.ipynb_checkpoints/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
