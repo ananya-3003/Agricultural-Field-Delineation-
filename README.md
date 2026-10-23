@@ -92,35 +92,6 @@ Git repo/
 ├── requirements.txt            # Python dependencies
 └── .gitignore                  # Git exclusions
 ```
-
----
-
-## 🚀 Quick Start
-
-### 1. Requirements
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Verify Architecture & Tensor Flow (No Dataset Required)
-You can immediately verify model instantiation, forward pass across S1 (SAR) and S2 (Optical) streams, and compound loss backpropagation:
-```bash
-python test_architecture.py
-```
-
-### 3. Training the Model
-Train any architectural stage using the unified training entry point:
-```bash
-# 1. Author Baseline Architecture
-python train.py --stage baseline --epochs 50 --batch_size 4
-
-# 2. + 15 Residual Shortcut Highways
-python train.py --stage residual --epochs 50 --batch_size 4
-
-# 3. + Residual + SD-scSE Attention (Full Proposed Model)
-python train.py --stage sd_scse --epochs 50 --batch_size 4
-```
-
 ---
 
 ## 📜 Citation
