@@ -31,7 +31,7 @@ To overcome these limitations, **VariEdge** introduces two core architectural mo
                                                      (Mean + StdDev Channel)    (Mean + StdDev Channel)
 ```
 
-### 1. 15 Residual Shortcut Highways (`dl_model/blocks.py`)
+### 1. Residual Shortcut Highways (`dl_model/blocks.py`)
 To preserve thin boundary signals across deep layers, every encoder, bottleneck, and decoder block incorporates an identity or projection shortcut:
 
 $$\mathbf{y} = \text{scSE}\Big(\text{ReLU}\big(\mathcal{F}(\mathbf{x}) + \mathcal{S}(\mathbf{x})\big)\Big)$$
@@ -65,21 +65,6 @@ $$\mathbf{z}_{\text{SD-scSE}} = \mathbf{z}_{\text{SD-cSE}} + \mathbf{z}_{\text{s
 This allows the network to dynamically amplify edge-sensitive feature maps while suppressing interior crop texture noise.
 
 ---
-
-## 📊 Controlled Architectural Ablation Benchmark
-
-Evaluating the structural modifications against the author baseline under identical training protocols and compound loss formulation on the benchmark dataset:
-
-| Model Architecture Stage | Residual Highways | Channel Attention | IoU (%) | F1-Score (%) | Boundary Distance Error (PoLiS) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Author Baseline** | ❌ (0) | Standard SE ($\mu$ only) | 42.45% | 39.09% | 19.77 m |
-| **Stage 1: Fine-Tuned Baseline** | ❌ (0) | Standard SE ($\mu$ only) | 55.39% | 54.19% | 15.04 m |
-| **Stage 2: + Residual Connections** | ✅ (15) | Standard SE ($\mu$ only) | 53.10% | 57.60% | 15.21 m |
-| **Stage 3: + Residual + SD-scSE (Ours)** | ✅ (15) | **SD-scSE ($\mu + \sigma$)** | **56.70%** | **61.06%** | **14.51 m** |
-
-### Key Findings:
-* **PoLiS Boundary Distance Error:** Reduced from **$19.77\text{ m} \rightarrow 14.51\text{ m}$**, confirming that predicted boundary vertices align significantly closer to actual agricultural cadastral boundaries.
-* **Over-Segmentation Suppression:** The baseline suffered from high false positives caused by crop furrows and internal textures. The proposed SD-scSE attention pruned spurious interior detections, matching ground-truth property parcels.
 
 ---
 
